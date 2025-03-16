@@ -1,10 +1,14 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import './GoalsInfo.css';
 
 const GoalsInfo = () => {
   const navigate = useNavigate();
-
+  const [selectedMajor1, setSelectedMajor1] = useState("computer-science");
+  const [selectedMajor2, setSelectedMajor2] = useState("");
+  const [selectedMajor3, setSelectedMajor3] = useState("");
+  const [careerGoals, setCareerGoals] = useState("I'm interested in pursuing a career in software engineering or data science, with a particular interest in artificial intelligence and machine learning. I'd like to work at a tech company that's focused on developing innovative solutions that have positive social impact.");
+  
   return (
     <div className="container">
       <div className="signup-header">
@@ -44,9 +48,13 @@ const GoalsInfo = () => {
         
         <div className="form-group">
           <label htmlFor="intendedMajor1">Intended Major (First Choice) *</label>
-          <select id="intendedMajor1" required>
+          <select 
+            id="intendedMajor1" 
+            value={selectedMajor1} 
+            onChange={(e) => setSelectedMajor1(e.target.value)} 
+            required>
             <option value="">Select a Major</option>
-            <option value="computer-science" defaultValue>Computer Science</option>
+            <option value="computer-science">Computer Science</option>
             <option value="engineering">Engineering</option>
             <option value="business">Business</option>
             <option value="biology">Biology</option>
@@ -72,14 +80,17 @@ const GoalsInfo = () => {
         <div className="form-row">
           <div className="form-group">
             <label htmlFor="intendedMajor2">Second Choice (Optional)</label>
-            <select id="intendedMajor2">
+            <select 
+              id="intendedMajor2" 
+              value={selectedMajor2} 
+              onChange={(e) => setSelectedMajor2(e.target.value)}>
               <option value="">Select a Major</option>
               <option value="computer-science">Computer Science</option>
               <option value="engineering">Engineering</option>
               <option value="business">Business</option>
               <option value="biology">Biology</option>
               <option value="psychology">Psychology</option>
-              <option value="economics" defaultValue>Economics</option>
+              <option value="economics">Economics</option>
               <option value="english">English</option>
               <option value="political-science">Political Science</option>
               <option value="mathematics">Mathematics</option>
@@ -98,7 +109,10 @@ const GoalsInfo = () => {
           
           <div className="form-group">
             <label htmlFor="intendedMajor3">Third Choice (Optional)</label>
-            <select id="intendedMajor3">
+            <select 
+              id="intendedMajor3" 
+              value={selectedMajor3} 
+              onChange={(e) => setSelectedMajor3(e.target.value)}>
               <option value="">Select a Major</option>
               <option value="computer-science">Computer Science</option>
               <option value="engineering">Engineering</option>
@@ -108,7 +122,7 @@ const GoalsInfo = () => {
               <option value="economics">Economics</option>
               <option value="english">English</option>
               <option value="political-science">Political Science</option>
-              <option value="mathematics" defaultValue>Mathematics</option>
+              <option value="mathematics">Mathematics</option>
               <option value="physics">Physics</option>
               <option value="chemistry">Chemistry</option>
               <option value="history">History</option>
@@ -125,7 +139,12 @@ const GoalsInfo = () => {
         
         <div className="form-group">
           <label htmlFor="careerGoals">Career Goals/Field of Interest *</label>
-          <textarea id="careerGoals" required defaultValue="I'm interested in pursuing a career in software engineering or data science, with a particular interest in artificial intelligence and machine learning. I'd like to work at a tech company that's focused on developing innovative solutions that have positive social impact."></textarea>
+          <textarea 
+            id="careerGoals" 
+            required 
+            value={careerGoals} 
+            onChange={(e) => setCareerGoals(e.target.value)}>
+          </textarea>
           <div className="word-count">Word count: 42/150</div>
         </div>
         
@@ -180,7 +199,7 @@ const GoalsInfo = () => {
                 <span>Small<br />(&lt;2,000)</span>
                 <span>Medium<br />(2,000-5,000)</span>
                 <span>Large<br />(5,000-15,000)</span>
-                <span>Very Large<br />&gt;15,000)</span>
+                <span>Very Large<br />(&gt;15,000)</span>
               </div>
             </div>
           </div>

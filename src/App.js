@@ -7,7 +7,7 @@ import Signup from './components/Signup';
 import AcademicInfo from './components/AcademicInfo';
 import ActivitiesInfo from './components/ActivitiesInfo';
 import EssaysInfo from './components/EssaysInfo';
-import GoalsInfo from './components/GoalsInfo'; // if available
+import GoalsInfo from './components/GoalsInfo';
 
 function App() {
   return (
@@ -21,6 +21,7 @@ function App() {
         <Route path="/signup/activities" element={<ActivitiesInfo />} />
         <Route path="/signup/essays" element={<EssaysInfo />} />
         <Route path="/signup/goals" element={<GoalsInfo />} />
+        <Route path="/dashboard" element={<div>Dashboard</div>} />
       </Routes>
     </div>
   );
