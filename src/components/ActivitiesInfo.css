@@ -1,4 +1,4 @@
-/* Signup.css */
+/* ActivitiesInfo.css */
 * {
     box-sizing: border-box;
     margin: 0;
@@ -53,6 +53,17 @@
     z-index: 1;
   }
   
+  .progress-bar::after {
+    content: "";
+    position: absolute;
+    top: 15px;
+    left: 0;
+    width: 50%;
+    height: 4px;
+    background-color: #2563eb;
+    z-index: 1;
+  }
+  
   .progress-step {
     position: relative;
     z-index: 2;
@@ -81,10 +92,20 @@
     color: white;
   }
   
+  .step-circle.completed {
+    background-color: #2563eb;
+    color: white;
+  }
+  
   .step-label {
     font-size: 14px;
     color: #6b7280;
     font-weight: 500;
+  }
+  
+  .step-label.active {
+    color: #1f2937;
+    font-weight: 600;
   }
   
   .signup-form {
@@ -102,6 +123,13 @@
     padding-bottom: 10px;
     border-bottom: 2px solid #f3f4f6;
     font-weight: 600;
+  }
+  
+  .form-section-subtitle {
+    font-size: 18px;
+    color: #374151;
+    margin: 30px 0 15px;
+    font-weight: 500;
   }
   
   .form-row {
@@ -141,66 +169,141 @@
     box-shadow: 0 0 0 3px rgba(37,99,235,0.1);
   }
   
-  .language-container {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 10px;
-    margin-top: 10px;
-  }
-  
-  .language-pill {
-    display: inline-flex;
-    align-items: center;
-    background-color: #e5e7eb;
-    border-radius: 20px;
-    padding: 5px 12px;
-    font-size: 14px;
-  }
-  
-  .language-pill .remove {
-    margin-left: 6px;
-    cursor: pointer;
+  .form-help {
+    font-size: 13px;
     color: #6b7280;
+    margin-top: 5px;
   }
   
-  .language-pill .remove:hover {
-    color: #ef4444;
-  }
-  
-  .add-language-btn {
-    display: inline-flex;
+  .form-hint {
+    display: flex;
     align-items: center;
-    padding: 6px 12px;
+    margin: 15px 0;
+    padding: 12px 15px;
     background-color: #f3f4f6;
-    color: #4b5563;
-    border: 1px dashed #d1d5db;
     border-radius: 6px;
     font-size: 14px;
-    cursor: pointer;
-    margin-top: 10px;
-    transition: all 0.3s;
+    color: #4b5563;
   }
   
-  .add-language-btn:hover {
-    background-color: #e5e7eb;
-    color: #1f2937;
+  .form-hint.info {
+    background-color: #eef2ff;
+    color: #4338ca;
+    border-left: 4px solid #6366f1;
   }
   
-  .inline-form {
+  .form-hint svg {
+    margin-right: 8px;
+    flex-shrink: 0;
+    color: #2563eb;
+  }
+  
+  .table-container {
+    overflow-x: auto;
+    margin-bottom: 30px;
+  }
+  
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 15px;
+  }
+  
+  th, td {
+    border: 1px solid #e5e7eb;
+    padding: 12px 15px;
+    text-align: left;
+  }
+  
+  th {
+    background-color: #f9fafb;
+    font-weight: 600;
+    color: #374151;
+  }
+  
+  tr:nth-child(even) {
+    background-color: #f9fafb;
+  }
+  
+  td input, td select {
+    width: 100%;
+    padding: 8px;
     border: 1px solid #d1d5db;
-    padding: 15px;
-    margin-bottom: 15px;
-    border-radius: 6px;
+    border-radius: 4px;
+    font-size: 15px;
+  }
+  
+  td input:focus, td select:focus {
+    outline: none;
+    border-color: #2563eb;
+    box-shadow: 0 0 0 2px rgba(37,99,235,0.1);
+  }
+  
+  .toggle-container {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+  }
+  
+  .toggle-switch {
+    position: relative;
+    display: inline-block;
+    width: 50px;
+    height: 24px;
+    margin-right: 10px;
+  }
+  
+  .toggle-switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+  }
+  
+  .toggle-slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #e5e7eb;
+    transition: .4s;
+    border-radius: 34px;
+  }
+  
+  .toggle-slider:before {
+    position: absolute;
+    content: "";
+    height: 18px;
+    width: 18px;
+    left: 3px;
+    bottom: 3px;
+    background-color: white;
+    transition: .4s;
+    border-radius: 50%;
+  }
+  
+  input:checked + .toggle-slider {
+    background-color: #2563eb;
+  }
+  
+  input:checked + .toggle-slider:before {
+    transform: translateX(26px);
+  }
+  
+  .toggle-label {
+    font-weight: 500;
+    color: #4b5563;
   }
   
   .form-buttons {
     display: flex;
     justify-content: space-between;
-    margin-top: 15px;
+    margin-top: 40px;
   }
   
   .btn-prev {
-    padding: 10px 20px;
+    padding: 12px 24px;
     background-color: #f3f4f6;
     color: #4b5563;
     border: 1px solid #d1d5db;
@@ -215,7 +318,7 @@
   }
   
   .btn-next {
-    padding: 10px 25px;
+    padding: 12px 28px;
     background-color: #2563eb;
     color: white;
     border: none;
